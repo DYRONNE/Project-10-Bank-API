@@ -1,22 +1,26 @@
-const express = require('express')
-const router = express.Router()
-const userController = require('../controllers/userController')
-const tokenValidation = require('../middleware/tokenValidation')
+const express = require('express');
+const router = express.Router();
+const userController = require('../controllers/userController');
+const tokenValidation = require('../middleware/tokenValidation');
 
-router.post('/signup', userController.createUser)
+// Création d'un utilisateur
+router.post('/signup', userController.createUser);
 
-router.post('/login', userController.loginUser)
+// Connexion d'un utilisateur
+router.post('/login', userController.loginUser);
 
-router.post(
+// Récupérer le profil de l'utilisateur (GET, pas POST)
+router.get(
   '/profile',
-  tokenValidation.validateToken,
+  tokenValidation.validateToken, // Valider le token avant de récupérer le profil
   userController.getUserProfile
-)
+);
 
+// Mettre à jour le profil de l'utilisateur
 router.put(
   '/profile',
-  tokenValidation.validateToken,
+  tokenValidation.validateToken, // Valider le token avant de mettre à jour
   userController.updateUserProfile
-)
+);
 
-module.exports = router
+module.exports = router;
