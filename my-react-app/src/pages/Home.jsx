@@ -1,4 +1,3 @@
-
 import '../main.css';
 import { Link } from 'react-router-dom';
 import logo from '../assets/img/argentBankLogo.png';
@@ -19,10 +18,15 @@ function Home() {
           <h1 className="sr-only">Argent Bank</h1>
         </a>
         <div>
-            <Link className="main-nav-item" to="/sign-in">
+          <Link className="main-nav-item" to="/sign-in">
             <i className="fa fa-user-circle"></i>
             Sign In
-            </Link>
+          </Link>
+          {/* Nouveau lien "Mon compte" */}
+          <Link className="main-nav-item" to="/user">
+            <i className="fa fa-user"></i>
+            Mon compte
+          </Link>
         </div>
       </nav>
       <main>
@@ -52,7 +56,7 @@ function Home() {
           <div className="feature-item">
             <img
               src={money}
-              alt="Chat Icon"
+              alt="Money Icon"
               className="feature-icon"
             />
             <h3 className="feature-item-title">More savings means higher rates</h3>
@@ -63,7 +67,7 @@ function Home() {
           <div className="feature-item">
             <img
               src={security}
-              alt="Chat Icon"
+              alt="Security Icon"
               className="feature-icon"
             />
             <h3 className="feature-item-title">Security you can trust</h3>

@@ -8,8 +8,9 @@ import axios from "axios";
 import logo from "../assets/img/argentBankLogo.png";
 
 const User = () => {
-  const { isLoggedIn, token } = useSelector((state) => state.user);
+  const { token } = useSelector((state) => state.user);
   const [userDetails, setUserDetails] = useState(null); // Pour stocker les détails de l'utilisateur récupérés
+  console.log(token);
   const [loading, setLoading] = useState(true); // Pour gérer le chargement des données
   const [error, setError] = useState(null); // Pour gérer les erreurs
   const [isEditing, setIsEditing] = useState(false); // Etat pour savoir si l'on est en mode édition
@@ -20,6 +21,8 @@ const User = () => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const isLoggedIn = Boolean(token);
 
   useEffect(() => {
     if (!isLoggedIn) {
